@@ -1,22 +1,43 @@
 <?php
-if (isset($_POST['submit'])) {
+$errors = '';
+$myemail = '013198_1714210417@protonmail.com';//<-----Put Your email address here.
+if(empty($_POST['name'])  ||
+   empty($_POST['email']) ||
+   empty($_POST['message']))
+{
+    $errors .= "\n Error: all fields are required";
+}
+
 $name = $_POST['name'];
-$mailFrom = $_POST['email'];
-$message = $_POST['messsage'];
+$email_address = $_POST['email'];
+$message = $_POST['message'];
 
-$email_from = $_POST['email'];
+{
+	$to = $myemail;
+	$email_subject = "Contact form submission: $name";
+	$email_body = "You have received a new message. ".
+	" Here are the details:\n Name: $name \n Email: $email_address \n Message \n $message";
 
-$subject = "new request";
+	$headers = "From: $myemail\n";
+	$headers .= "Reply-To: $email_address";
 
-$email_body = "request from ".$name.".\n\n".$message;
-
-$mailTo = "013198_1714210417@protonmail.com";
-
-$headers = "From: ".$mailFrom;
-
-
-mail($mailTo,$subject,$email_body,$headers);
-
-header("Location: index.html");
+	mail($to,$email_subject,$email_body,$headers);
+	//redirect to the 'thank you' page
+	header('Location: thank-you.html');
 }
 ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>Contact form handler</title>
+</head>
+
+<body>
+<!-- This page is displayed only if there is some error -->
+<?php
+echo nl2br($errors);
+?>
+
+
+</body>
+</html>
