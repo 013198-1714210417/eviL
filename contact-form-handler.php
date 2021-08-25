@@ -1,24 +1,22 @@
 <?php
+if (isset($_POST['submit'])) {
 $name = $_POST['name'];
-$visitor_email = $_POST['email'];
+$mailFrom = $_POST['email'];
 $message = $_POST['messsage'];
 
 $email_from = $_POST['email'];
 
-$email_subject = "new request";
+$subject = "new request";
 
-$email_body = "User Name: $name.\n".
-                "User Email: $visitor_email.\n".
-                  "User Message: $message.\n";
+$email_body = "request from ".$name.".\n\n".$message;
 
-$to = "013198_1714210417@protonmail.com";
+$mailTo = "013198_1714210417@protonmail.com";
 
-$headers = "From: $email_from \r\n";
+$headers = "From: ".$mailFrom;
 
-$headers .= "Reply-To: $visitor_email \r\n";
 
-mail($to,$email_subject,$email_body,$headers);
+mail($mailTo,$subject,$email_body,$headers);
 
-header("Location: index.html");
-
+header("Location: index.php?mailsend");
+}
 ?>
