@@ -3,7 +3,7 @@ $name = $_POST['name'];
 $visitor_email = $_POST['email'];
 $message = $_POST['messsage'];
 
-$email_from = '013198_1714210417@protonmail.com';
+$email_from = $_POST['email'];
 
 $email_subject = "new request";
 
