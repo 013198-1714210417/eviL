@@ -17,6 +17,6 @@ $headers = "From: ".$mailFrom;
 
 mail($mailTo,$subject,$email_body,$headers);
 
-header("Location: index.php?mailsend");
+header("Location: index.html");
 }
 ?>
