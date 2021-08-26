@@ -3,7 +3,7 @@ body {
   padding: 0;
   text-align: center;
   background: gray;
-  background-size: 500px;
+  background-size: 200px;
   background-position: center;
   font-family: monospace;
 }
@@ -52,3 +52,10 @@ input{
   cursor: pointer;
   color: white;
 }
+/* .large{
+  position: fixed;
+  left:auto;
+  width: 100px;
+  margin-left: 500px;
+  transition: all 4s ease-in;
+} */
